@@ -8,27 +8,22 @@ function Detail() {
 
  
 
-  async function getFetch() {
-    const data = await fetch("https://restcountries.com/v3.1/name/"+name.replace(":",""))
-    const res = await data.json()
-    setApidata(res)
-    console.log(apidata);
-}
-
-useEffect(() => {
-    getFetch()
-}, [])
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/name/"+ name)
+      .then((res) => res.json())
+      .then((data) => setApidata(data[0]));
+  }, []);
 
   return (
     <div> 
       
-      {console.log(apidata.name.common)}
+     
       <div className='cards'>
       {
         apidata &&
         <ul className='card' >
-          {/* <div><img src={apidata.flags.png} alt="flag" /></div>
-          <h3>{apidata.name.common}</h3> */}
+          <div><img src={apidata.flags?.png} alt="flag" /></div>
+          <h3>{apidata.name?.common}</h3>
           <li>Population: {apidata.population}</li>
           <li>Region: {apidata.region}</li>
           <li>Capital: {apidata.capital}</li>
