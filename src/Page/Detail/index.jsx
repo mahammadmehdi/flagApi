@@ -9,11 +9,11 @@ function Detail() {
  
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/name/"+ name)
+    fetch(`https://restcountries.com/v3.1/name/${name}`)
       .then((res) => res.json())
       .then((data) => setApidata(data[0]));
   }, []);
-
+console.log(apidata);
   return (
     <div> 
       

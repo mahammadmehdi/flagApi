@@ -31,14 +31,14 @@ function Home() {
               <option value={"oceania"}>Oceania</option>
             </select>
           </div>
-            <button onClick={Theme}>Dark Mode</button>
+            <button onClick={Theme}>Dark/Light Mode</button>
             <input type="text" value={searchInp} onChange={handleInput} />
             <div className='cards'>
                 {apidata
                 .filter((x) => x.name.common.toLowerCase().includes(searchInp.toLowerCase()))
                 .filter((x) => x.region.toLowerCase().includes(categories))
                 .map((x) =>
-                    <NavLink to={"/detail/name/:"+x.name.common}>
+                    <NavLink to={"/detail/name/"+x.name.common}>
                         <ul className='card'>
                             <div><img src={x.flags.png} alt="flag" /></div>
                             <h3>{x.name.common}</h3>
